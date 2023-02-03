@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(BoxCollider2D))]
+
 public class PlayerController : MonoBehaviour
 {
     [Range (0,100)] public float Speed; //Movement Speed of the pg
@@ -14,6 +17,7 @@ public class PlayerController : MonoBehaviour
     {
         //References for rigidbody and m_Animator from object
         m_Body = GetComponent<Rigidbody2D>();
+        m_Grounded = true;
     }
 
     // Update is called once per frame
@@ -34,12 +38,17 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         m_Body.velocity = new Vector2(m_Body.velocity.x, JumpHeight); //Move the pg above / jump
-        m_Grounded = false; //We are not touching the ground so its false
+        //m_Grounded = false; //We are not touching the ground so its false
     }
 
     private void OnCollisionEnter2D(Collision2D collision)  //This check if this game Object is colliding with something
     {
-        if (collision.gameObject.tag == "Ground")    //We are checking if its colliding an Object with the Tag: Ground
+        if (collision.gameObject.CompareTag("Ground") && collision.gameObject.CompareTag("Dirt"))    //We are checking if its colliding an Object with the Tag: Ground
             m_Grounded = true; //We are touching the ground so its true
+    }
+    private void OnCollisionExit2D(Collision2D collision)  //This check if this game Object is colliding with something
+    {
+        if (collision.gameObject.CompareTag("Ground") && collision.gameObject.CompareTag("Dirt"))    //We are checking if its colliding an Object with the Tag: Ground
+            m_Grounded = false; //We are touching the ground so its true
     }
 }
