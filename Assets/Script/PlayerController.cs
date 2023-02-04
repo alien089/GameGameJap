@@ -12,17 +12,38 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D m_Body;
     private bool m_Grounded; //To see if the player is on the ground
     private float m_HorizontalInput;
+    private Camera m_Cam;
+
+    public Vector2 MousePos;
+    public Vector2 Direction;
+    public StageManager StageManager;
+
+    public GameObject m_MouseCompass;
+    private VineController m_Vine;
 
     private void Awake()
     {
         //References for rigidbody and m_Animator from object
         m_Body = GetComponent<Rigidbody2D>();
+        m_Vine = GetComponent<VineController>();
         m_Grounded = true;
+    }
+
+    void Start()
+    {
+        m_Cam = Camera.main;
+        MousePos = new Vector2();
     }
 
     // Update is called once per frame
     void Update()
     {
+        MousePos = StageManager.ConvertToWorldUnits(MousePos);
+        float directionX = MousePos.x - transform.position.x;
+        float directionY = MousePos.y - transform.position.y;
+
+        Direction = new Vector2(directionX, directionY);
+
         m_HorizontalInput = Input.GetAxis("Horizontal");    //When you press leftKeys -1, rightKeys +1
         m_Body.velocity = new Vector2(m_HorizontalInput * Speed, m_Body.velocity.y);  //Movement of the pg
 
@@ -33,12 +54,37 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && m_Grounded)    //If Space Key is pressed and the pg is not on the ground the pg is going to jump
             Jump(); //Calling Jump method
+
+        m_MouseCompass.transform.forward = Direction;
+
+        //Using of swing vine
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            //calculate distanza from player
+            float distance = Vector2.Distance(MousePos, transform.position);
+
+            RaycastHit2D hit = Physics2D.Linecast(MousePos, transform.position);
+            Debug.DrawLine(transform.position, Direction, Color.red, 10.0f);
+
+            if (hit.collider.gameObject.CompareTag("Vineable"))
+            {
+                m_Vine.CalculateDistance(MousePos);
+                m_Vine.CreateVine(Direction);
+            }
+        }
     }
 
     private void Jump()
     {
         m_Body.velocity = new Vector2(m_Body.velocity.x, JumpHeight); //Move the pg above / jump
         //m_Grounded = false; //We are not touching the ground so its false
+    }
+
+    void OnGUI()
+    {
+        Event currentEvent = Event.current;
+        MousePos.x = currentEvent.mousePosition.x;
+        MousePos.y = m_Cam.pixelHeight - currentEvent.mousePosition.y;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)  //This check if this game Object is colliding with something

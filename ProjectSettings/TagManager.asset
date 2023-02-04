@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Dirt
   - Ground
+  - Vineable
+  - VineEnd
   layers:
   - Default
   - TransparentFX
