@@ -21,7 +21,12 @@ public class Respawn : MonoBehaviour
             isDead = false;
         }
         if (Input.GetKey(KeyCode.X))
-            isDead = true;
+            Death();
+    }
+
+    public void Death()
+    {
+        isDead = true;
     }
 
     public void CheckpointSet()
