@@ -149,7 +149,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 21
+  RunningSpeed: 44
   JumpHeight: 5
+  m_Body: {fileID: 0}
   m_Grounded: 0
   canMove: 0
 --- !u!114 &8010551998135634551

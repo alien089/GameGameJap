@@ -8,6 +8,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Range (0,100)] public float Speed; //Movement Speed of the pg
+    [Range(0,100)] public float RunningSpeed;
     [Range(0, 100)] public float JumpHeight; //How high is the jump 
     
     public Rigidbody2D m_Body;
@@ -44,8 +45,12 @@ public class PlayerController : MonoBehaviour
         if (canMove)
         {
             m_HorizontalInput = Input.GetAxis("Horizontal");    //When you press leftKeys -1, rightKeys +1
-            m_Body.velocity = new Vector2(m_HorizontalInput * Speed, m_Body.velocity.y);
-            if(m_Body.velocity.magnitude > 0) m_Animator.SetBool("IsWalking", true);
+            if(!Input.GetKey(KeyCode.LeftShift))
+                m_Body.velocity = new Vector2(m_HorizontalInput * Speed, m_Body.velocity.y);
+            else
+                m_Body.velocity = new Vector2(m_HorizontalInput * RunningSpeed, m_Body.velocity.y);
+
+            if (m_Body.velocity.magnitude > 0) m_Animator.SetBool("IsWalking", true);
             else m_Animator.SetBool("IsWalking", false);  //Movement of the pg
 
             if (Input.GetKey(KeyCode.LeftShift)) m_Animator.SetBool("IsRunning", true);
