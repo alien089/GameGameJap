@@ -13,6 +13,11 @@ public class PauseManager : MonoBehaviour
 
     public void Awake()
     {
+        
+    }
+
+    public void Start()
+    {
         pauseCanvas.gameObject.SetActive(false);
         optionsCanvas.gameObject.SetActive(false);
         isPaused = false;
