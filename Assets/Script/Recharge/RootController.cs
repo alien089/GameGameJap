@@ -11,7 +11,11 @@ public class RootController : MonoBehaviour
     private Rootbar root;
     private float m_Time;
     private float m_RefillTime;
-    [Range(1,10)] public float m_RefillTick;
+    [Range(1,100)] public float m_RefillTick;
+
+    [SerializeField] Transform respawnPoint;
+    private Respawn m_Respawn;
+    private bool isCheckpointChecked;
 
     private bool isKeyPressed;
 
@@ -23,6 +27,8 @@ public class RootController : MonoBehaviour
         m_RefillTime = 0;
         m_Pc = GetComponent<PlayerController>();
         isKeyPressed = false;
+        isCheckpointChecked = false;
+        m_Respawn = GetComponent<Respawn>();
     }
 
     public void Update()
@@ -34,6 +40,7 @@ public class RootController : MonoBehaviour
         {
             isKeyPressed = true;
             m_Time = 0;
+            isCheckpointChecked = true;
         }
 
         if (isKeyPressed && m_Dirted && m_Time < (RefillCountdown / 1000))
@@ -46,18 +53,26 @@ public class RootController : MonoBehaviour
             }
         }
         
-        if (m_Time > (RefillCountdown) / 1000)
+        if (m_Time >= (RefillCountdown) / 1000)
         {
             m_Pc.canMove = true;
             isKeyPressed = false;
         }
 
+        if (isCheckpointChecked)
+            moveRespawnPoint();
     }
 
     public void RefillBar()
     {
         if(root.RootbarValue < root.RootbarMaxValue)
             root.RootbarValue += root.RootbarMaxValue / (m_RefillTick - 1);
+    }
+
+    public void moveRespawnPoint()
+    {
+        m_Respawn.CheckpointSet();
+        isCheckpointChecked = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)  //This check if this game Object is colliding with something

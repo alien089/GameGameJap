@@ -1,0 +1,37 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Respawn : MonoBehaviour
+{
+    [SerializeField] Transform respawnPoint;
+    
+    private bool isDead;
+
+    private void Start()
+    {
+        isDead = false;
+    }
+
+    public void Update()
+    {
+        if (isDead)
+        {
+            transform.position = new Vector2(respawnPoint.position.x, respawnPoint.position.y);
+            isDead = false;
+        }
+        if (Input.GetKey(KeyCode.X))
+            isDead = true;
+    }
+
+    public void CheckpointSet()
+    {
+        respawnPoint.transform.position = new Vector2(transform.position.x, transform.position.y);
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Checkpoint")
+            CheckpointSet();
+    }
+}
