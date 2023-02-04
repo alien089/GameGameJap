@@ -17,8 +17,7 @@ public class Respawn : MonoBehaviour
     {
         if (isDead)
         {
-            transform.position = new Vector2(respawnPoint.position.x, respawnPoint.position.y);
-            isDead = false;
+            respawnToCheckpoint();
         }
         if (Input.GetKey(KeyCode.X))
             Death();
@@ -27,6 +26,12 @@ public class Respawn : MonoBehaviour
     public void Death()
     {
         isDead = true;
+    }
+
+    public void respawnToCheckpoint()
+    {
+        transform.position = new Vector2(respawnPoint.position.x, respawnPoint.position.y);
+        isDead = false;
     }
 
     public void CheckpointSet()

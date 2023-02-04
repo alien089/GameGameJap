@@ -16,7 +16,5 @@ public class UIManager : MonoBehaviour
     public void Update()
     {
         RootbarCurrent.fillAmount = root.RootbarValue / 100;
-
-        
     }
 }
