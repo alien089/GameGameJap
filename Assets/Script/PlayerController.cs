@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [Range (0,100)] public float Speed; //Movement Speed of the pg
     [Range(0, 100)] public float JumpHeight; //How high is the jump 
     
-    private Rigidbody2D m_Body;
+    public Rigidbody2D m_Body;
     private Animator m_Animator;
     private SpriteRenderer m_SR;
 
@@ -57,8 +57,6 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.Space) && m_Grounded)    //If Space Key is pressed and the pg is not on the ground the pg is going to jump
                 Jump(); //Calling Jump method
         }
-        else
-            m_Body.velocity = new Vector2(0, 0);
     }
 
     private void Jump()

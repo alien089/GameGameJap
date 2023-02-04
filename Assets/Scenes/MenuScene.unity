@@ -1650,6 +1650,7 @@ MonoBehaviour:
   masterSlider: {fileID: 425014166}
   musicSlider: {fileID: 1318471357}
   sfxSlider: {fileID: 1087629226}
+  optionsCanvas: {fileID: 0}
 --- !u!1 &890680787
 GameObject:
   m_ObjectHideFlags: 0
@@ -13868,6 +13869,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2142135464667557381, guid: eb27e363e2726a845b7642450cfacfcc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2142135464667557382, guid: eb27e363e2726a845b7642450cfacfcc, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2142135464667557382, guid: eb27e363e2726a845b7642450cfacfcc, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 1328785026708425004, guid: fabab851b42965b4e9dd1a038e0af5a9, type: 2}
+    - target: {fileID: 2142135464667557383, guid: eb27e363e2726a845b7642450cfacfcc, type: 3}
+      propertyPath: audioClip.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2142135464667557400, guid: eb27e363e2726a845b7642450cfacfcc, type: 3}
