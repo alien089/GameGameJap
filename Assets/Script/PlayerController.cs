@@ -12,11 +12,13 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D m_Body;
     private bool m_Grounded; //To see if the player is on the ground
     private float m_HorizontalInput;
+    public bool canMove;
     private Camera m_Cam;
 
     public Vector2 MousePos;
     public Vector2 Direction;
     public StageManager StageManager;
+    public GameObject Vine;
 
     public GameObject m_MouseCompass;
     private VineController m_Vine;
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour
         m_Body = GetComponent<Rigidbody2D>();
         m_Vine = GetComponent<VineController>();
         m_Grounded = true;
+        canMove = true;
     }
 
     void Start()
@@ -36,40 +39,50 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         MousePos = StageManager.ConvertToWorldUnits(MousePos);
         float directionX = MousePos.x - transform.position.x;
         float directionY = MousePos.y - transform.position.y;
 
         Direction = new Vector2(directionX, directionY);
+        
+        if(canMove)
+        {
+            m_HorizontalInput = Input.GetAxis("Horizontal");    //When you press leftKeys -1, rightKeys +1
+            m_Body.velocity = new Vector2(m_HorizontalInput * Speed, m_Body.velocity.y);  //Movement of the pg
 
-        m_HorizontalInput = Input.GetAxis("Horizontal");    //When you press leftKeys -1, rightKeys +1
-        m_Body.velocity = new Vector2(m_HorizontalInput * Speed, m_Body.velocity.y);  //Movement of the pg
+            if (m_HorizontalInput < 0.001f)    //if he is facing left turn/flip left
+                transform.localScale = new Vector3(-1, 1, 1);
+            else if (m_HorizontalInput > 0.001f)  //else turn/flip right
+                transform.localScale = new Vector3(1, 1, 1);
 
-        if (m_HorizontalInput < 0.001f)    //if he is facing left turn/flip left
-            transform.localScale = new Vector3(-1, 1, 1);
-        else if (m_HorizontalInput > 0.001f)  //else turn/flip right
-            transform.localScale = new Vector3(1, 1, 1);
-
-        if (Input.GetKey(KeyCode.Space) && m_Grounded)    //If Space Key is pressed and the pg is not on the ground the pg is going to jump
-            Jump(); //Calling Jump method
+            if (Input.GetKey(KeyCode.Space) && m_Grounded)    //If Space Key is pressed and the pg is not on the ground the pg is going to jump
+                Jump(); //Calling Jump method
+        }
 
         m_MouseCompass.transform.forward = Direction;
 
         //Using of swing vine
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            //calculate distanza from player
-            float distance = Vector2.Distance(MousePos, transform.position);
-
-            RaycastHit2D hit = Physics2D.Linecast(MousePos, transform.position);
-            Debug.DrawLine(transform.position, Direction, Color.red, 10.0f);
-
-            if (hit.collider.gameObject.CompareTag("Vineable"))
+            if(Vine == null)
             {
-                m_Vine.CalculateDistance(MousePos);
-                m_Vine.CreateVine(Direction);
+                //calculate distanza from player
+                float distance = Vector2.Distance(MousePos, transform.position);
+
+                RaycastHit2D hit = Physics2D.Linecast(MousePos, transform.position);
+                Debug.DrawLine(transform.position, Direction, Color.red, 10.0f);
+
+                if (hit.collider.gameObject.CompareTag("Vineable"))
+                {
+                    m_Vine.CalculateDistance(hit.collider.transform.position);
+                    m_Vine.CreateVine(Direction);
+                }
+            }
+            else
+            {
+                Destroy(Vine);
             }
         }
     }

@@ -40,6 +40,7 @@ public class VineController : MonoBehaviour
     public void CreateVine(Vector2 Direction)
     {
         GameObject tmp;
+        GameObject JointManager;
         print(m_MouseCompass.transform.rotation.x);
 
         float position = m_Distance / 2;
@@ -50,7 +51,6 @@ public class VineController : MonoBehaviour
                          new Vector2(m_MouseCompass.transform.position.x + (m_MouseCompass.transform.forward.x * position),
                                      m_MouseCompass.transform.position.y + (m_MouseCompass.transform.forward.y * position)),
                          Quaternion.Euler(0, 0, m_MouseCompass.transform.rotation.x * 180)) as GameObject;
-            tmp.gameObject.GetComponent<SpriteRenderer>().size = new Vector2(m_Distance, 1.57f);
         }
         else
         {
@@ -58,8 +58,12 @@ public class VineController : MonoBehaviour
                          new Vector2(m_MouseCompass.transform.position.x + (m_MouseCompass.transform.forward.x * position),
                                      m_MouseCompass.transform.position.y + (m_MouseCompass.transform.forward.y * position)),
                          Quaternion.Euler(0, 0, -m_MouseCompass.transform.rotation.x * 180)) as GameObject;
-            tmp.gameObject.GetComponent<SpriteRenderer>().size = new Vector2(m_Distance, 1.57f);
         }
+            
+        tmp.gameObject.GetComponent<SpriteRenderer>().size = new Vector2(m_Distance, 1.57f);
+
+        m_Player.Vine = tmp;
+        //m_Player.Vine.gameObject.
 
         m_VineOffSetX = VineDistance + CompassOffSetX;
     }
