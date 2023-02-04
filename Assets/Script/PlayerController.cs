@@ -57,12 +57,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)  //This check if this game Object is colliding with something
     {
-        if (collision.gameObject.CompareTag("Ground") && collision.gameObject.CompareTag("Dirt"))    //We are checking if its colliding an Object with the Tag: Ground
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Dirt"))    //We are checking if its colliding an Object with the Tag: Ground
             m_Grounded = true; //We are touching the ground so its true
     }
     private void OnCollisionExit2D(Collision2D collision)  //This check if this game Object is colliding with something
     {
-        if (collision.gameObject.CompareTag("Ground") && collision.gameObject.CompareTag("Dirt"))    //We are checking if its colliding an Object with the Tag: Ground
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Dirt"))    //We are checking if its colliding an Object with the Tag: Ground
             m_Grounded = false; //We are touching the ground so its true
     }
     void OnGUI()
