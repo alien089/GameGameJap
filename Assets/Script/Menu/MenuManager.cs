@@ -12,7 +12,6 @@ public class MenuManager : MonoBehaviour
 
     public void Awake()
     {
-
         optionsMenu.gameObject.SetActive(false);
         creditsMenu.gameObject.SetActive(false);
 
@@ -27,6 +26,7 @@ public class MenuManager : MonoBehaviour
     {
         mainMenu.gameObject.SetActive(false);
         optionsMenu.gameObject.SetActive(true);
+
     }
 
     public void Back()
