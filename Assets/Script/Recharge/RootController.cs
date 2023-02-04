@@ -41,6 +41,7 @@ public class RootController : MonoBehaviour
             isKeyPressed = true;
             m_Time = 0;
             isCheckpointChecked = true;
+            m_Pc.m_Body.velocity = new Vector2(0, 0);
         }
 
         if (isKeyPressed && m_Dirted && m_Time < (RefillCountdown / 1000))
@@ -83,6 +84,6 @@ public class RootController : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)  //This check if this game Object is colliding with something
     {
         if (collision.gameObject.CompareTag("Dirt"))    //We are checking if its colliding an Object with the Tag: Dirt
-            m_Dirted = true; //We are touching the ground so its true
+            m_Dirted = false; //We are touching the ground so its true
     }
 }
