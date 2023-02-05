@@ -13,6 +13,7 @@ public class BridgeController : MonoBehaviour
     private PlayerController m_Player;
     private Rootbar root;
     public SpriteRenderer sr;
+    private AudioManager audio;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class BridgeController : MonoBehaviour
         transform.rotation = Quaternion.Euler(0,0 , rot+ 90);
         m_Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         root = GameObject.FindGameObjectWithTag("Player").GetComponent<Rootbar>();
+        audio = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         //sr = GetComponent<SpriteRenderer>();
     }
 
@@ -62,11 +64,13 @@ public class BridgeController : MonoBehaviour
                     {
                         Instantiate(LeftBridge, transform.position, Quaternion.identity);
                         root.RootbarValue -= root.RootbarMaxValue / 10f;
+                        audio.PlaySFX(8);
                     }
                     else
                     {
                         Instantiate(RightBridge, transform.position, Quaternion.identity);
                         root.RootbarValue -= root.RootbarMaxValue / 10f;
+                        audio.PlaySFX(8);
                     }
                 }               
             }

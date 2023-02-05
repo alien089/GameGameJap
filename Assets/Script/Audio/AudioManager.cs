@@ -34,9 +34,10 @@ public class AudioManager : MonoBehaviour
     {
         loadVolume();
     }
-
+  
     public void PlaySFX(int n)
     {
+
         AudioClip clip = audioClip[n];
         audioSource.PlayOneShot(clip);
     }

@@ -142,4 +142,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: fabab851b42965b4e9dd1a038e0af5a9, type: 2}
   audioSource: {fileID: 0}
-  audioClip: []
+  audioClip:
+  - {fileID: 8300000, guid: f39f0967650ea384b99b5eee0637e46d, type: 3}
+  - {fileID: 8300000, guid: e6801806494fcee4091f7d504dc1425e, type: 3}
+  - {fileID: 8300000, guid: fcebefeb588487b46b90614803df0bd7, type: 3}
+  - {fileID: 8300000, guid: 89cb070be29d5024287445f7b2f96ced, type: 3}
+  - {fileID: 8300000, guid: ea23b88c3744095408cfed9067f123b0, type: 3}
+  - {fileID: 8300000, guid: 0cfd1211457519846abc27559a19ab5d, type: 3}
+  - {fileID: 8300000, guid: c6345b839e130c94f84d5ea60891a344, type: 3}
+  - {fileID: 8300000, guid: 3eb899b994040034fab31404baead08b, type: 3}
+  - {fileID: 8300000, guid: 8692f2baf681c9046ab6fd7d6c6283e8, type: 3}
+  - {fileID: 8300000, guid: 5e902633001aed246ab4f8d46b43ccb8, type: 3}
+  - {fileID: 8300000, guid: 3b937843d4c431f4ebf3924d7554883b, type: 3}

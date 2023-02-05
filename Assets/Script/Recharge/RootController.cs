@@ -16,6 +16,7 @@ public class RootController : MonoBehaviour
     private Transform respawnPoint;
     private Respawn m_Respawn;
     private bool isCheckpointChecked;
+    private AudioManager audio;
 
     private bool isKeyPressed;
 
@@ -30,7 +31,7 @@ public class RootController : MonoBehaviour
         isCheckpointChecked = false;
         m_Respawn = GetComponent<Respawn>();
         respawnPoint = GameObject.FindGameObjectWithTag("Respawn").transform;
-
+        audio = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
     public void Update()
@@ -44,6 +45,7 @@ public class RootController : MonoBehaviour
             m_Time = 0;
             isCheckpointChecked = true;
             m_Pc.m_Body.velocity = new Vector2(0, 0);
+            audio.PlaySFX(10);
         }
 
         if (isKeyPressed && m_Dirted && m_Time < (RefillCountdown / 1000))

@@ -10,6 +10,7 @@ public class VinesSystem : MonoBehaviour
     private DistanceJoint2D m_DistanceJoint;
     private PlayerController m_Pc;
     private Rootbar root;
+    private AudioManager audio;
 
     public int SwingVelocity;
     public int RunningSwingVelocity;
@@ -28,6 +29,7 @@ public class VinesSystem : MonoBehaviour
         m_DistanceJoint.enabled = false;
         m_LineRenderer.enabled = false;
         vineable = false;
+        audio = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
     public void Update()
@@ -63,6 +65,7 @@ public class VinesSystem : MonoBehaviour
         {
             //m_Pc.m_Grounded = true;
             m_Pc.canMove = false;
+            audio.PlaySFX(9);
             if (mousePos.x > m_Pc.transform.position.x && Input.GetKey(KeyCode.LeftShift))   //Swing while running
                 m_Pc.m_Body.velocity = new Vector2(RunningSwingVelocity, 0);
             else if (mousePos.x > m_Pc.transform.position.x)

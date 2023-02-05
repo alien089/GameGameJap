@@ -13,6 +13,8 @@ TagManager:
   - Grass
   - Death
   - Bridgeable
+  - AudioManager
+  - Water
   layers:
   - Default
   - TransparentFX
