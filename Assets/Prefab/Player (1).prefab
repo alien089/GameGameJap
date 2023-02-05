@@ -199,8 +199,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: -4744724232239111109, guid: 84f4d6085c00aef498ee3f29f0661dd0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -225,7 +225,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -244,18 +244,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.08626938, y: 0.054770947}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.66, y: 8.56}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.5176182, y: 8.356187}
   m_EdgeRadius: 0
 --- !u!114 &8752969859121589680
 MonoBehaviour:
@@ -269,12 +269,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6eadf107e4d0df499a840d5eb6a64b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 21
-  RunningSpeed: 44
+  Speed: 14
+  RunningSpeed: 20
   JumpHeight: 5
   m_Body: {fileID: 8752969859121589682}
   m_Grounded: 0
   canMove: 0
+  isMoving: 0
 --- !u!114 &8752969859857189810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RootbarValue: 100
-  RootbarMaxValue: 0
+  RootbarMaxValue: 100
 --- !u!114 &8752969859121589579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,7 +305,6 @@ MonoBehaviour:
   RefillCountdown: 1000
   m_Dirted: 0
   m_RefillTick: 10
-  respawnPoint: {fileID: 6472305483857578872, guid: ed37b55ce3edee74495d699cfda60e59, type: 3}
 --- !u!114 &8752969858893575078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,7 +317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fc5d8788c9616249bb18067318621b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnPoint: {fileID: 6472305483857578872, guid: ed37b55ce3edee74495d699cfda60e59, type: 3}
 --- !u!120 &8752969859121589681
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -443,7 +442,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8752969859121589683}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: b6b32c1e8994b4c4c9320077ecf0457f, type: 2}
   m_CullingMode: 0
@@ -467,9 +466,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 8752969858944853716}
-  Vine: {fileID: 0}
   SwingVelocity: 15
-  RunningSwingVelocity: 0
+  RunningSwingVelocity: 25
 --- !u!1 &8752969859964102076
 GameObject:
   m_ObjectHideFlags: 0
