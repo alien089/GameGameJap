@@ -13,7 +13,7 @@ public class RootController : MonoBehaviour
     private float m_RefillTime;
     [Range(1,100)] public float m_RefillTick;
 
-    [SerializeField] Transform respawnPoint;
+    private Transform respawnPoint;
     private Respawn m_Respawn;
     private bool isCheckpointChecked;
 
@@ -29,6 +29,8 @@ public class RootController : MonoBehaviour
         isKeyPressed = false;
         isCheckpointChecked = false;
         m_Respawn = GetComponent<Respawn>();
+        respawnPoint = GameObject.FindGameObjectWithTag("Respawn").transform;
+
     }
 
     public void Update()

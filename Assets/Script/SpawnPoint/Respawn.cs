@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Respawn : MonoBehaviour
 {
-    [SerializeField] Transform respawnPoint;
+    private Transform respawnPoint;
     
     private bool isDead;
+
 
     private void Start()
     {
         isDead = false;
+        respawnPoint = GameObject.FindGameObjectWithTag("Respawn").transform;
     }
 
     public void Update()
@@ -28,9 +31,12 @@ public class Respawn : MonoBehaviour
         isDead = true;
     }
 
+
+
     public void respawnToCheckpoint()
     {
         transform.position = new Vector2(respawnPoint.position.x, respawnPoint.position.y);
+        SceneManager.LoadScene("SceneRecharge");
         isDead = false;
     }
 

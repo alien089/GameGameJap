@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] public Image RootbarCurrent;
-    [SerializeField] public Rootbar root;
+    private Rootbar root;
 
     public void Start()
     {
+        root = GameObject.FindGameObjectWithTag("Player").GetComponent<Rootbar>();
         RootbarCurrent.fillAmount = root.RootbarValue / 100;
     }
 

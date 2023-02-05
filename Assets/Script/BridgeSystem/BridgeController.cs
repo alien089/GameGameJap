@@ -10,7 +10,8 @@ public class BridgeController : MonoBehaviour
     public float Force;
     public GameObject LeftBridge;
     public GameObject RightBridge;
-    public PlayerController m_Player;
+    private PlayerController m_Player;
+    private Rootbar root;
     public SpriteRenderer sr;
 
     // Start is called before the first frame update
@@ -24,7 +25,8 @@ public class BridgeController : MonoBehaviour
         rb.velocity = new Vector2(direction.x, direction.y).normalized * Force;
         float rot = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0,0 , rot+ 90);
-        //m_Player = GetComponent<PlayerController>();
+        m_Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        root = GameObject.FindGameObjectWithTag("Player").GetComponent<Rootbar>();
         //sr = GetComponent<SpriteRenderer>();
     }
 
@@ -34,7 +36,6 @@ public class BridgeController : MonoBehaviour
             || collision.gameObject.CompareTag("Glass") || collision.gameObject.CompareTag("Stone") 
             || collision.gameObject.CompareTag("Wood") || collision.gameObject.CompareTag("Bridgeable"))
         {
-            Debug.Log("Porcodio");
             Destroy(this);
             if (collision.gameObject.CompareTag("Bridgeable"))
             {
@@ -55,16 +56,21 @@ public class BridgeController : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Bridgeable"))
             {
-                
-                if (transform.position.x - m_Player.transform.position.x >= 0)
+                if (root.RootbarValue > 0)
                 {
-                    Instantiate(LeftBridge, transform.position, Quaternion.identity);
-                }
-                else
-                    Instantiate(RightBridge, transform.position, Quaternion.identity);
+                    if (transform.position.x - m_Player.transform.position.x >= 0)
+                    {
+                        Instantiate(LeftBridge, transform.position, Quaternion.identity);
+                        root.RootbarValue -= root.RootbarMaxValue / 10f;
+                    }
+                    else
+                    {
+                        Instantiate(RightBridge, transform.position, Quaternion.identity);
+                        root.RootbarValue -= root.RootbarMaxValue / 10f;
+                    }
+                }               
             }
             Destroy(gameObject);
-            Debug.Log("Porcodio"); //We are touching the ground so its true
         }
     }
 }

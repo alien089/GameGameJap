@@ -89,7 +89,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 13
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -304,7 +304,7 @@ MonoBehaviour:
   RefillCountdown: 1000
   m_Dirted: 0
   m_RefillTick: 10
-  respawnPoint: {fileID: 0}
+  respawnPoint: {fileID: 6472305483857578872, guid: ed37b55ce3edee74495d699cfda60e59, type: 3}
 --- !u!114 &8752969858893575078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fc5d8788c9616249bb18067318621b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnPoint: {fileID: 0}
+  respawnPoint: {fileID: 6472305483857578872, guid: ed37b55ce3edee74495d699cfda60e59, type: 3}
 --- !u!120 &8752969859121589681
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -337,7 +337,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 41ed8ffeaacec5e4f94a7ee98a5d5576, type: 2}
+  - {fileID: 2100000, guid: 1eb09538f94fce54ba6e3d70794735cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -363,12 +363,12 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.2
+    widthMultiplier: 1
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 0.068227895
         value: 1
         inSlope: 0
         outSlope: 0
@@ -381,7 +381,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.12348814, g: 0.5849056, b: 0, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -405,7 +405,7 @@ LineRenderer:
       atime5: 0
       atime6: 0
       atime7: 0
-      m_Mode: 0
+      m_Mode: 1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -413,9 +413,9 @@ LineRenderer:
     alignment: 0
     textureMode: 0
     shadowBias: 0.5
-    generateLightingData: 0
+    generateLightingData: 1
   m_UseWorldSpace: 1
-  m_Loop: 0
+  m_Loop: 1
 --- !u!232 &8752969859121589687
 DistanceJoint2D:
   m_ObjectHideFlags: 0
@@ -467,6 +467,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 8752969858944853716}
+  Vine: {fileID: 0}
+  SwingVelocity: 15
+  RunningSwingVelocity: 0
 --- !u!1 &8752969859964102076
 GameObject:
   m_ObjectHideFlags: 0
