@@ -43,5 +43,9 @@ public class Respawn : MonoBehaviour
     {
         if(collision.gameObject.tag == "Checkpoint")
             CheckpointSet();
+        if (collision.gameObject.CompareTag("Death"))
+        {
+            Death();
+        }
     }
 }
