@@ -345,6 +345,51 @@ Transform:
   m_Father: {fileID: 1255913959}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1188072677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1188072679}
+  - component: {fileID: 1188072678}
+  m_Layer: 0
+  m_Name: HookManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1188072678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188072677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d7f6e7a2cc47ce49924c34ea601318f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RopeStart: {fileID: 7543695776084240008, guid: e1d42fd31cf1dda4180d8764d6abb6ed, type: 3}
+  NodeTrasfer: {fileID: 6309330590210352567, guid: 5be2e068da05f364d8479e364688d074, type: 3}
+--- !u!4 &1188072679
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188072677}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.1509976, y: -2.637884, z: -2.514969}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1255913957
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,11 +491,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 21
+  RunningSpeed: 0
   JumpHeight: 5
-  MousePos: {x: 0, y: 0}
-  Direction: {x: 0, y: 0}
-  StageManager: {fileID: 1629808944}
-  m_MouseCompass: {fileID: 363635549}
+  m_Body: {fileID: 0}
+  m_Grounded: 0
+  canMove: 0
 --- !u!50 &1255913961
 Rigidbody2D:
   serializedVersion: 4
@@ -507,18 +552,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1255913957}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 491f1bc343d12a8458cc7edb3a711b87, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d7f6e7a2cc47ce49924c34ea601318f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SelectedPoint: {x: 0, y: 0}
-  tileVineStart: {fileID: 963064711253246310, guid: 058c6d572fa2b8542aa16156fcde996a, type: 3}
-  tileVineLoop: {fileID: 8425469408443576246, guid: fb57345438d897746a018fe1a384d9bc, type: 3}
-  tileVineEnd: {fileID: 3141933794688478779, guid: fbb9559c4bfc5ca488601b86f9e0379a, type: 3}
-  ParentVine: {fileID: 8699038713745796478, guid: e9f6028a858d2ee44945111ecfdf35d2, type: 3}
-  CompassOffSetX: 2
-  VineDistance: 1
-  m_MouseCompass: {fileID: 363635549}
-  test: 0.67
+  RopeStart: {fileID: 0}
+  NodeTrasfer: {fileID: 0}
 --- !u!1 &1629808943
 GameObject:
   m_ObjectHideFlags: 0

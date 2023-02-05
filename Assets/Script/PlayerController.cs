@@ -8,93 +8,84 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Range (0,100)] public float Speed; //Movement Speed of the pg
+    [Range(0,100)] public float RunningSpeed;
     [Range(0, 100)] public float JumpHeight; //How high is the jump 
-    private Rigidbody2D m_Body;
-    private bool m_Grounded; //To see if the player is on the ground
+    
+    public Rigidbody2D m_Body;
+    private Animator m_Animator;
+    private SpriteRenderer m_SR;
+
+    public bool m_Grounded; //To see if the player is on the ground
     private float m_HorizontalInput;
-    private Camera m_Cam;
 
-    public Vector2 MousePos;
-    public Vector2 Direction;
-    public StageManager StageManager;
+    public bool canMove;
 
-    public GameObject m_MouseCompass;
-    private VineController m_Vine;
+    private Camera cam;
+    Vector2 mousePos;
 
     private void Awake()
     {
         //References for rigidbody and m_Animator from object
         m_Body = GetComponent<Rigidbody2D>();
-        m_Vine = GetComponent<VineController>();
         m_Grounded = true;
+        canMove = true;
     }
-
     void Start()
     {
-        m_Cam = Camera.main;
-        MousePos = new Vector2();
+        cam = Camera.main;
+        mousePos = new Vector2();
+        m_Animator = GetComponent<Animator>();
+        m_SR = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        MousePos = StageManager.ConvertToWorldUnits(MousePos);
-        float directionX = MousePos.x - transform.position.x;
-        float directionY = MousePos.y - transform.position.y;
-
-        Direction = new Vector2(directionX, directionY);
-
-        m_HorizontalInput = Input.GetAxis("Horizontal");    //When you press leftKeys -1, rightKeys +1
-        m_Body.velocity = new Vector2(m_HorizontalInput * Speed, m_Body.velocity.y);  //Movement of the pg
-
-        if (m_HorizontalInput < 0.001f)    //if he is facing left turn/flip left
-            transform.localScale = new Vector3(-1, 1, 1);
-        else if (m_HorizontalInput > 0.001f)  //else turn/flip right
-            transform.localScale = new Vector3(1, 1, 1);
-
-        if (Input.GetKey(KeyCode.Space) && m_Grounded)    //If Space Key is pressed and the pg is not on the ground the pg is going to jump
-            Jump(); //Calling Jump method
-
-        m_MouseCompass.transform.forward = Direction;
-
-        //Using of swing vine
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        //if (m_Grounded) m_Animator.SetBool("IsJumping", false);
+        if (canMove)
         {
-            //calculate distanza from player
-            float distance = Vector2.Distance(MousePos, transform.position);
+            m_HorizontalInput = Input.GetAxis("Horizontal");    //When you press leftKeys -1, rightKeys +1
+            if(!Input.GetKey(KeyCode.LeftShift))
+                m_Body.velocity = new Vector2(m_HorizontalInput * Speed, m_Body.velocity.y);
+            else
+                m_Body.velocity = new Vector2(m_HorizontalInput * RunningSpeed, m_Body.velocity.y);
 
-            RaycastHit2D hit = Physics2D.Linecast(MousePos, transform.position);
-            Debug.DrawLine(transform.position, Direction, Color.red, 10.0f);
+            //if (m_Body.velocity.magnitude > 0) m_Animator.SetBool("IsWalking", true);
+            //else m_Animator.SetBool("IsWalking", false);  //Movement of the pg
 
-            if (hit.collider.gameObject.CompareTag("Vineable"))
-            {
-                m_Vine.CalculateDistance(MousePos);
-                m_Vine.CreateVine(Direction);
-            }
+            //if (Input.GetKey(KeyCode.LeftShift)) m_Animator.SetBool("IsRunning", true);
+            //else m_Animator.SetBool("IsRunning", false);
+
+            if(m_Body.velocity.x < 0) m_SR.flipX = true;
+            else if (m_Body.velocity.x > 0) m_SR.flipX = false;
+
+            if (Input.GetKey(KeyCode.Space) && m_Grounded)    //If Space Key is pressed and the pg is not on the ground the pg is going to jump
+                Jump(); //Calling Jump method
         }
     }
 
     private void Jump()
     {
-        m_Body.velocity = new Vector2(m_Body.velocity.x, JumpHeight); //Move the pg above / jump
-        //m_Grounded = false; //We are not touching the ground so its false
-    }
-
-    void OnGUI()
-    {
-        Event currentEvent = Event.current;
-        MousePos.x = currentEvent.mousePosition.x;
-        MousePos.y = m_Cam.pixelHeight - currentEvent.mousePosition.y;
+        m_Body.velocity = new Vector2(m_Body.velocity.x, JumpHeight);
+/*        m_Animator.SetBool("IsJumping", true); *///Move the pg above / jump
+        m_Grounded = false; //We are not touching the ground so its false
     }
 
     private void OnCollisionEnter2D(Collision2D collision)  //This check if this game Object is colliding with something
     {
-        if (collision.gameObject.CompareTag("Ground") && collision.gameObject.CompareTag("Dirt"))    //We are checking if its colliding an Object with the Tag: Ground
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Dirt"))    //We are checking if its colliding an Object with the Tag: Ground
             m_Grounded = true; //We are touching the ground so its true
     }
+    /*
     private void OnCollisionExit2D(Collision2D collision)  //This check if this game Object is colliding with something
     {
-        if (collision.gameObject.CompareTag("Ground") && collision.gameObject.CompareTag("Dirt"))    //We are checking if its colliding an Object with the Tag: Ground
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Dirt"))    //We are checking if its colliding an Object with the Tag: Ground
             m_Grounded = false; //We are touching the ground so its true
+    }*/
+    void OnGUI()
+    {
+        Event currentEvent = Event.current;
+        mousePos.x = currentEvent.mousePosition.x;
+        mousePos.y = cam.pixelHeight - currentEvent.mousePosition.y;
     }
 }
