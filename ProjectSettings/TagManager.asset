@@ -7,6 +7,12 @@ TagManager:
   - Dirt
   - Ground
   - Checkpoint
+  - Glass
+  - Wood
+  - Stone
+  - Grass
+  - Death
+  - Bridgeable
   layers:
   - Default
   - TransparentFX

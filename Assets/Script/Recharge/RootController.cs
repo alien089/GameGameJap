@@ -54,7 +54,7 @@ public class RootController : MonoBehaviour
             }
         }
         
-        if (m_Time >= (RefillCountdown) / 1000)
+        if (isKeyPressed && m_Time >= (RefillCountdown) / 1000)
         {
             m_Pc.canMove = true;
             isKeyPressed = false;

@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Jump()
+    public void Jump()
     {
         m_Body.velocity = new Vector2(m_Body.velocity.x, JumpHeight);
         m_Animator.SetBool("IsJumping", true); //Move the pg above / jump
