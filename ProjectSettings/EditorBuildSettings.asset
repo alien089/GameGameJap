@@ -8,13 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuScene.unity
     guid: 7413b982df66c11459efe6f72b8da6ea
-  - enabled: 0
-    path: Assets/Scenes/SceneRecharge.unity
-    guid: 074e8378b9703b14eae7109b88aaa5c1
+  - enabled: 1
+    path: Assets/Scenes/Video.unity
+    guid: 175bc6c1d76e8364aaf09cffb17632ec
   - enabled: 1
     path: Assets/Scenes/Map01.unity
     guid: 2d994fa60c82d12439b23c6c46d5242b
   - enabled: 1
     path: Assets/Scenes/Map02.unity
     guid: a1c893cbbb04a534c9b85356a75357a2
+  - enabled: 0
+    path: Assets/Scenes/SceneRecharge.unity
+    guid: 074e8378b9703b14eae7109b88aaa5c1
   m_configObjects: {}

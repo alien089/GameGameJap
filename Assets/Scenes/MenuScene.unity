@@ -1184,8 +1184,8 @@ GameObject:
   - component: {fileID: 689436377}
   - component: {fileID: 689436376}
   - component: {fileID: 689436375}
-  - component: {fileID: 689436379}
   - component: {fileID: 689436378}
+  - component: {fileID: 689436379}
   m_Layer: 5
   m_Name: CreditsButton
   m_TagString: Untagged
@@ -7549,7 +7549,7 @@ Animator:
   m_GameObject: {fileID: 1271744003}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: da839a729487e974ba57457335ab2a6f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 393c69334a23b3744939a6c692409c36, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -8674,7 +8674,7 @@ Animator:
   m_GameObject: {fileID: 1685790471}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: da839a729487e974ba57457335ab2a6f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1f09f4358cbc0d24c9f149cc10d9381d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -13876,18 +13876,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2142135464667557381, guid: eb27e363e2726a845b7642450cfacfcc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2142135464667557382, guid: eb27e363e2726a845b7642450cfacfcc, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2142135464667557382, guid: eb27e363e2726a845b7642450cfacfcc, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 1328785026708425004, guid: fabab851b42965b4e9dd1a038e0af5a9, type: 2}
-    - target: {fileID: 2142135464667557383, guid: eb27e363e2726a845b7642450cfacfcc, type: 3}
-      propertyPath: audioClip.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2142135464667557400, guid: eb27e363e2726a845b7642450cfacfcc, type: 3}

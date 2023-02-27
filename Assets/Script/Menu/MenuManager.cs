@@ -20,15 +20,15 @@ public class MenuManager : MonoBehaviour
 
     public void NewGame()
     {
-        SceneManager.LoadScene("SceneRecharge");
-        audio.PlaySFX(0);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+//        audio.PlaySFX(0);
     }
 
     public void Options()
     {
         mainMenu.gameObject.SetActive(false);
         optionsMenu.gameObject.SetActive(true);
-        audio.PlaySFX(0);
+//        audio.PlaySFX(0);
 
     }
 
@@ -37,19 +37,18 @@ public class MenuManager : MonoBehaviour
         optionsMenu.gameObject.SetActive(false);
         creditsMenu.gameObject.SetActive(false);
         mainMenu.gameObject.SetActive(true);
-        audio.PlaySFX(0);
+//        audio.PlaySFX(0);
     }
 
     public void Credits()
     {
         mainMenu.gameObject.SetActive(false);
         creditsMenu.gameObject.SetActive(true);
-        audio.PlaySFX(0);
+//        audio.PlaySFX(0);
     }
 
     public void ExitGame()
     {
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
     }
 }

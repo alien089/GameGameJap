@@ -32,7 +32,7 @@ public class BridgeController : MonoBehaviour
         //sr = GetComponent<SpriteRenderer>();
     }
 
-    /*private void OnCollisionEnter2D(Collider2D collision)
+ /*   private void OnCollisionEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Dirt") 
             || collision.gameObject.CompareTag("Glass") || collision.gameObject.CompareTag("Stone") 
@@ -58,17 +58,19 @@ public class BridgeController : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Bridgeable"))
             {
-                if (root.RootbarValue > 0)
+                if (root.RootbarValue >= 10)
                 {
                     if (transform.position.x - m_Player.transform.position.x >= 0)
                     {
-                        Instantiate(LeftBridge, transform.position, Quaternion.identity);
+						Vector3 BridgeStart = new Vector3(transform.position.x - 2.8f, transform.position.y, transform.position.z);
+                        Instantiate(LeftBridge, BridgeStart, Quaternion.identity);
                         root.RootbarValue -= root.RootbarMaxValue / 10f;
                         audio.PlaySFX(8);
                     }
                     else
                     {
-                        Instantiate(RightBridge, transform.position, Quaternion.identity);
+						Vector3 BridgeStart = new Vector3(transform.position.x + 2.8f, transform.position.y, transform.position.z);
+						Instantiate(RightBridge, BridgeStart, Quaternion.identity);
                         root.RootbarValue -= root.RootbarMaxValue / 10f;
                         audio.PlaySFX(8);
                     }

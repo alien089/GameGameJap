@@ -31,12 +31,15 @@ public class Respawn : MonoBehaviour
         isDead = true;
     }
 
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.TryGetComponent(out EnemySpyke ESpyke)) respawnToCheckpoint();
+	}
 
-
-    public void respawnToCheckpoint()
+	public void respawnToCheckpoint()
     {
         transform.position = new Vector2(respawnPoint.position.x, respawnPoint.position.y);
-        SceneManager.LoadScene("SceneRecharge");
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         isDead = false;
     }
 

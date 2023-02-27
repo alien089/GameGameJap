@@ -15,6 +15,8 @@ TagManager:
   - Bridgeable
   - AudioManager
   - Water
+  - NextLevel
+  - End
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - fx
   - Water
   - UI
-  - 
+  - Bridgeable
   - 
   - 
   - 

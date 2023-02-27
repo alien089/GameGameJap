@@ -13,12 +13,8 @@ public class Rootbar : MonoBehaviour
         RootbarMaxValue = RootbarValue;
     }
 
-    void Update()
+    public void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Z))
-        {
-            RootbarValue -= 15;
-        }
         if(RootbarValue > RootbarMaxValue)
         {
             RootbarValue = RootbarMaxValue;

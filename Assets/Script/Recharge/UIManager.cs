@@ -5,17 +5,20 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] public Image RootbarCurrent;
-    private Rootbar root;
+    public Image RootbarCurrent1;
+	public Image RootbarCurrent2;
+	public Image RootbarCurrent3;
+	private Rootbar root;
 
     public void Start()
     {
         root = GameObject.FindGameObjectWithTag("Player").GetComponent<Rootbar>();
-        RootbarCurrent.fillAmount = root.RootbarValue / 100;
-    }
+	}
 
     public void Update()
     {
-        RootbarCurrent.fillAmount = root.RootbarValue / 100;
-    }
+        RootbarCurrent1.fillAmount = root.RootbarValue / 100;
+		RootbarCurrent2.fillAmount = root.RootbarValue / 100;
+		RootbarCurrent3.fillAmount = root.RootbarValue / 100;
+	}
 }

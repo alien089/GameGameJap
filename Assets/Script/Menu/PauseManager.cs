@@ -23,6 +23,7 @@ public class PauseManager : MonoBehaviour
         optionsCanvas.gameObject.SetActive(false);
         isPaused = false;
         audio = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+//		rootbarCanvas = GameObject.FindGameObjectsWithTag("UI").GetComponent<GameObject>();
         respawn = GameObject.FindGameObjectWithTag("Player").GetComponent<Respawn>();
     }
 

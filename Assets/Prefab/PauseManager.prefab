@@ -84,7 +84,6 @@ MonoBehaviour:
   pauseCanvas: {fileID: 6492730160612525895}
   rootbarCanvas: {fileID: 0}
   optionsCanvas: {fileID: 6492730160852678349}
-  respawn: {fileID: 0}
 --- !u!1 &6492730159266047271
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,6 +2255,7 @@ MonoBehaviour:
   masterSlider: {fileID: 6492730160483934581}
   musicSlider: {fileID: 6492730160882809400}
   sfxSlider: {fileID: 6492730159813040790}
+  optionsCanvas: {fileID: 0}
 --- !u!1 &6492730160882809401
 GameObject:
   m_ObjectHideFlags: 0

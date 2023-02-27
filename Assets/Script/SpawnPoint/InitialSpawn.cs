@@ -6,10 +6,10 @@ public class InitialSpawn : MonoBehaviour
 {
     public GameObject m_PrefabPlayer;
     private GameObject Respawn;
-    void Start()
+    private void Awake()
     {
         Respawn = GameObject.FindGameObjectWithTag("Respawn");
-        DontDestroyOnLoad(Respawn);
+		DontDestroyOnLoad(Respawn);
         Spawn();
     }
 
