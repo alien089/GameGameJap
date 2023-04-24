@@ -193,7 +193,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1756278789}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54a97f372da89f640b4b68981d01ee90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Duration: 33
+  Duration: 10
 --- !u!1 &668643011
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,7 +334,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1354471997}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 8f3243d4785b18d41840573286f89fb9, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: d1b3c600198a03642ae87f371b716b36, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}

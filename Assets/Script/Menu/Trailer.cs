@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Trailer : MonoBehaviour
 {
-    // Start is called before the first frame update
+	public float Duration = 0f;
+	// Start is called before the first frame update
     void Start()
     {
 		StartCoroutine(Wait());
@@ -18,7 +19,7 @@ public class Trailer : MonoBehaviour
 
 	IEnumerator Wait()
 	{
-		yield return new WaitForSeconds(33f);
+		yield return new WaitForSeconds(Duration);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
 }
